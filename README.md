@@ -1,4 +1,4 @@
-# FCSAPI Realtime JS
+# FCSAPI Websocket JS
 
 **JavaScript & Node.js** Real-time WebSocket client library for **Forex**, **Cryptocurrency**, and **Stock** market data from [FCS API](https://fcsapi.com).
 
