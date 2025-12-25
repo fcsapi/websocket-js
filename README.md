@@ -5,7 +5,7 @@
 This library uses **WebSocket** protocol to stream live market data. Works seamlessly in both **Browser (JavaScript)** and **Node.js** environments.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://img.shields.io/npm/v/fcsapi-websocket-js.svg)](https://www.npmjs.com/package/fcsapi-websocket-js)
+[![npm version](https://img.shields.io/npm/v/fcsapi-websocket.svg)](https://www.npmjs.com/package/fcsapi-websocket)
 
 ## Features
 
@@ -23,6 +23,15 @@ Use demo API key for testing: `fcs_socket_demo`
 
 ## Installation
 
+### npm (Recommended)
+```bash
+npm install fcsapi-websocket
+```
+
+```javascript
+const FCSClient = require('fcsapi-websocket');
+```
+
 ### Browser (CDN)
 ```html
 <script src="https://cdn.jsdelivr.net/gh/fcsapi/websocket-js/fcs-client-lib.js"></script>
@@ -31,15 +40,6 @@ Use demo API key for testing: `fcs_socket_demo`
 ### Browser (Local)
 ```html
 <script src="fcs-client-lib.js"></script>
-```
-
-### Node.js (npm)
-```bash
-npm install fcsapi-websocket-js
-```
-
-```javascript
-const FCSClient = require('fcsapi-websocket-js');
 ```
 
 ## Quick Start
@@ -80,7 +80,7 @@ const FCSClient = require('fcsapi-websocket-js');
 
 ### Node.js Example
 ```javascript
-const FCSClient = require('fcsapi-websocket-js');
+const FCSClient = require('fcsapi-websocket');
 
 const client = new FCSClient('YOUR_API_KEY');
 

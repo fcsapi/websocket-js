@@ -1,6 +1,6 @@
 {
-  "name": "fcsapi-websocket-js",
-  "version": "4.0.1",
+  "name": "fcsapi-websocket",
+  "version": "4.0.0",
   "description": "JavaScript & Node.js WebSocket client for real-time Forex, Cryptocurrency, and Stock market data from FCS API",
   "main": "fcs-client-lib.js",
   "browser": "fcs-client-lib.js",
