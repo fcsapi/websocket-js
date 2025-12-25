@@ -1,0 +1,47 @@
+{
+  "name": "fcsapi-websocket-js",
+  "version": "4.0.0",
+  "description": "JavaScript & Node.js WebSocket client for real-time Forex, Cryptocurrency, and Stock market data from FCS API",
+  "main": "fcs-client-lib.js",
+  "browser": "fcs-client-lib.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcsapi/websocket-js.git"
+  },
+  "keywords": [
+    "websocket",
+    "forex",
+    "cryptocurrency",
+    "crypto",
+    "stock",
+    "real-time",
+    "trading",
+    "finance",
+    "fcs",
+    "fcsapi",
+    "market-data",
+    "bitcoin",
+    "ethereum",
+    "currency",
+    "exchange",
+    "javascript",
+    "nodejs",
+    "browser"
+  ],
+  "author": "FCS API <support@fcsapi.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fcsapi/websocket-js/issues"
+  },
+  "homepage": "https://fcsapi.com",
+  "dependencies": {
+    "ws": "^8.14.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

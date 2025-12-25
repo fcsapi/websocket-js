@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://fcsapi.com/demo/socket/v4/simple.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>FCS WebSocket - Simple Example</title>
+
+	<!-- New FCS WebSocket Client Library -->
+	<script src="../fcs-client-lib.js"></script>
+	<style type="text/css">
+		.time_update{
+			background: #78ff7c;
+		}
+		td{width: 300px;}
+		.status-connected {
+			color: green;
+		}
+		.status-disconnected {
+			color: red;
+		}
+	</style>
+</head>
+<body cz-shortcut-listen="true">
+	<h2 id="status" class="status-disconnected">Disconnected</h2>
+	<div style="text-align: center;">
+		<input type="text" id="apiKey" placeholder="Enter your API Key" value="" style="padding: 10px; width: 300px;">
+		<br>Enter <b>"fcs_socket_demo"</b> for demo purpose
+		<br><br>
+		<button onclick="startConnection()"><h4>Start Connection</h4></button>
+		<button onclick="closeConnection()"><h4>Close Connection</h4></button>
+
+	<br><br>
+	<h3>Forex</h3>
+		<table width="90%" border="1" style="margin: auto">
+			<tbody><tr>
+				<th>Name</th>
+				<th>Last Close</th>
+				<th>Current</th>
+				<th>Ask</th>
+				<th>Bid</th>
+				<th>High</th>
+				<th>Low</th>
+				<th>Change</th>
+				<th>Change%</th>
+				<th>Spread</th>
+				<th>Volume</th>
+				<th>Time</th>
+			</tr>
+			<tr>
+				<td>EUR-USD</td>
+				<td><span id="EUR-USD_LASTC">Press start</span></td>
+				<td><span id="EUR-USD_PRICE">Press start</span></td>
+				<td><span id="EUR-USD_ASK">Press start</span></td>
+				<td><span id="EUR-USD_BID">Press start</span></td>
+				<td><span id="EUR-USD_HIGH">Press start</span></td>
+				<td><span id="EUR-USD_LOW">Press start</span></td>
+				<td><span id="EUR-USD_CHANGE">Press start</span></td>
+				<td><span id="EUR-USD_CHANGEP">Press start</span></td>
+				<td><span id="EUR-USD_SPREAD">Press start</span></td>
+				<td><span id="EUR-USD_VOL">Press start</span></td>
+				<td><span id="EUR-USD_TIME">Press start</span></td>
+			</tr>
+			<tr>
+				<td>XAU-USD</td>
+				<td><span id="XAU-USD_LASTC">Press start</span></td>
+				<td><span id="XAU-USD_PRICE">Press start</span></td>
+				<td><span id="XAU-USD_ASK">Press start</span></td>
+				<td><span id="XAU-USD_BID">Press start</span></td>
+				<td><span id="XAU-USD_HIGH">Press start</span></td>
+				<td><span id="XAU-USD_LOW">Press start</span></td>
+				<td><span id="XAU-USD_CHANGE">Press start</span></td>
+				<td><span id="XAU-USD_CHANGEP">Press start</span></td>
+				<td><span id="XAU-USD_SPREAD">Press start</span></td>
+				<td><span id="XAU-USD_VOL">Press start</span></td>
+				<td><span id="XAU-USD_TIME">Press start</span></td>
+			</tr>
+		</tbody></table>
+
+		<h3>Crypto Currency <code><small>Exchange Binance</small></code></h3>
+		<table width="90%" border="1" style="margin: auto">
+			<tbody><tr>
+				<th>Name</th>
+				<th>Last Close</th>
+				<th>Current</th>
+				<th>Ask</th>
+				<th>Bid</th>
+				<th>High</th>
+				<th>Low</th>
+				<th>Change</th>
+				<th>Change%</th>
+				<th>Spread</th>
+				<th>Volume</th>
+				<th>Time</th>
+			</tr>
+			
+			<tr>
+				<td>LTC-USD</td>
+				<td><span id="LTC-USD_LASTC">Press start</span></td>
+				<td><span id="LTC-USD_PRICE">Press start</span></td>
+				<td><span id="LTC-USD_ASK">Press start</span></td>
+				<td><span id="LTC-USD_BID">Press start</span></td>
+				<td><span id="LTC-USD_HIGH">Press start</span></td>
+				<td><span id="LTC-USD_LOW">Press start</span></td>
+				<td><span id="LTC-USD_CHANGE">Press start</span></td>
+				<td><span id="LTC-USD_CHANGEP">Press start</span></td>
+				<td><span id="LTC-USD_SPREAD">Press start</span></td>
+				<td><span id="LTC-USD_VOL">Press start</span></td>
+				<td><span id="LTC-USD_TIME">Press start</span></td>
+			</tr>
+			<tr>
+				<td>XRP-USD</td>
+				<td><span id="XRP-USD_LASTC">Press start</span></td>
+				<td><span id="XRP-USD_PRICE">Press start</span></td>
+				<td><span id="XRP-USD_ASK">Press start</span></td>
+				<td><span id="XRP-USD_BID">Press start</span></td>
+				<td><span id="XRP-USD_HIGH">Press start</span></td>
+				<td><span id="XRP-USD_LOW">Press start</span></td>
+				<td><span id="XRP-USD_CHANGE">Press start</span></td>
+				<td><span id="XRP-USD_CHANGEP">Press start</span></td>
+				<td><span id="XRP-USD_SPREAD">Press start</span></td>
+				<td><span id="XRP-USD_VOL">Press start</span></td>
+				<td><span id="XRP-USD_TIME">Press start</span></td>
+			</tr>
+		</tbody></table>
+
+		<h3>Crypto  <code><small>Exchange OKX</small></code></h3>
+		<table width="90%" border="1" style="margin: auto">
+			<tbody><tr>
+				<th>Name</th>
+				<th>Last Close</th>
+				<th>Current</th>
+				<th>Ask</th>
+				<th>Bid</th>
+				<th>High</th>
+				<th>Low</th>
+				<th>Change</th>
+				<th>Change%</th>
+				<th>Spread</th>
+				<th>Volume</th>
+				<th>Time</th>
+			</tr>
+			<tr>
+				<td>LTC</td>
+				<td><span id="LTC_LASTC">Press start</span></td>
+				<td><span id="LTC_PRICE">Press start</span></td>
+				<td><span id="LTC_ASK">Press start</span></td>
+				<td><span id="LTC_BID">Press start</span></td>
+				<td><span id="LTC_HIGH">Press start</span></td>
+				<td><span id="LTC_LOW">Press start</span></td>
+				<td><span id="LTC_CHANGE">Press start</span></td>
+				<td><span id="LTC_CHANGEP">Press start</span></td>
+				<td><span id="LTC_SPREAD">Press start</span></td>
+				<td><span id="LTC_VOL">Press start</span></td>
+				<td><span id="LTC_TIME">Press start</span></td>
+			</tr>
+			<tr>
+				<td>XRP</td>
+				<td><span id="XRP_LASTC">Press start</span></td>
+				<td><span id="XRP_PRICE">Press start</span></td>
+				<td><span id="XRP_ASK">Press start</span></td>
+				<td><span id="XRP_BID">Press start</span></td>
+				<td><span id="XRP_HIGH">Press start</span></td>
+				<td><span id="XRP_LOW">Press start</span></td>
+				<td><span id="XRP_CHANGE">Press start</span></td>
+				<td><span id="XRP_CHANGEP">Press start</span></td>
+				<td><span id="XRP_SPREAD">Press start</span></td>
+				<td><span id="XRP_VOL">Press start</span></td>
+				<td><span id="XRP_TIME">Press start</span></td>
+			</tr>
+			
+		</tbody></table>
+		<strong style="color:Red">Difference between Crypto ex 1 and ex 2 :</strong>	 Both prices are from different exchanges, and some prices have an update frequency faster on Exchange 1 and some faster on Exchange 2.
+	</div>
+
+<script type="text/javascript">
+	// Global WebSocket client instance
+	let client = null;
+
+	// Start WebSocket connection
+	function startConnection() {
+		const apiKey = document.getElementById('apiKey').value.trim();
+
+		if (!apiKey) {
+			alert('Please enter your API Key');
+			return;
+		}
+
+		if (client) {
+			alert('Already connected!');
+			return;
+		}
+
+		// Set waiting status
+		document.querySelectorAll('table span').forEach(span => {
+			span.textContent = 'waiting...';
+		});
+
+		// Initialize FCS WebSocket client
+		client = new FCSClient(apiKey);
+		client.focusTimeout = 5; // Disconnect after 5 minutes of inactivity
+
+		// Start connection
+		client.connect()
+			.then(() => {
+				console.log('Connecting to FCS WebSocket...');
+			})
+			.catch(err => {
+				console.error('Connection failed:', err);
+				alert('Connection failed: ' + err.message);
+				client = null;
+			});
+
+		// Connection successful - subscribe to symbols
+		client.onconnected = () => {
+			updateStatus('Connected', true);
+			console.log('✅ Connected to FCS WebSocket');
+
+			// Subscribe to test symbols
+			client.join('ONA:EURUSD', '60');     // EUR/USD 1-hour
+			client.join('ONA:XAUUSD', '60');     // Gold 1-hour
+			client.join('BINANCE:LTCUSDT', '60'); // LTC/USD Exchange Binance
+			client.join('BINANCE:XRPUSDT', '60'); // XRP/USD Exchange Binance
+			// For Exchange 2 (if different exchange)
+			client.join('OKX:LTCUSDT', '60');     // LTC Exchange OKX
+			client.join('OKX:XRPUSDT', '60');     // XRP Exchange OKX
+		};
+
+		// Reconnection event
+		client.onreconnect = () => {
+			updateStatus('Reconnected', true);
+			console.log('🔄 Reconnected');
+		};
+
+		// Message received event
+		client.onmessage = (data) => {
+			if (data.type === 'price') {
+				updatePriceData(data);
+			} else {
+				console.log('Received message:', data);
+			}
+		};
+
+		// Disconnection event
+		client.onclose = () => {
+			updateStatus('Disconnected', false);
+			console.log('❌ Disconnected');
+		};
+
+		// Error event
+		client.onerror = (err) => {
+			console.error('WebSocket error:', err);
+		};
+	}
+
+	// Close WebSocket connection
+	function closeConnection() {
+		if (client) {
+			client.disconnect();
+			client = null;
+			updateStatus('Disconnected', false);
+
+			// Reset all values
+			document.querySelectorAll('table span').forEach(span => {
+				span.textContent = 'Press start';
+			});
+		}
+	}
+
+	// Update connection status display
+	function updateStatus(text, connected) {
+		const statusEl = document.getElementById('status');
+		statusEl.textContent = text;
+		statusEl.className = connected ? 'status-connected' : 'status-disconnected';
+	}
+
+	// Update price data in table
+	function updatePriceData(data) {
+		const prices = data.prices;
+		if (!window.priceHistory) window.priceHistory = {};
+
+		// Map to HTML ID: ONA:EURUSD->EUR-USD, BINANCE:LTCUSDT->LTC-USD, OKX:LTCUSDT->LTC
+		let sym = data.symbol.split(':')[1];
+		if (data.symbol.includes('OKX:') && sym.endsWith('USDT')) {
+			sym = sym.replace('USDT', '');  // OKX:LTCUSDT -> LTC
+		} else if (sym.endsWith('USDT')) {
+			sym = sym.replace('USDT', '-USD');  // BINANCE:LTCUSDT -> LTC-USD
+		} else if (sym.length === 6) {
+			sym = sym.substring(0, 3) + '-' + sym.substring(3);  // ONA:EURUSD -> EUR-USD
+		}
+
+		// Candle/Initial mode: full OHLCV data
+		if (prices.mode === 'candle' || prices.mode === 'initial') {
+			updateField(sym + '_LASTC', prices.o.toFixed(4));
+			updateField(sym + '_PRICE', prices.c.toFixed(4));
+			updateField(sym + '_HIGH', prices.h.toFixed(4));
+			updateField(sym + '_LOW', prices.l.toFixed(4));
+			updateField(sym + '_VOL', prices.v ? prices.v.toFixed(2) : '-');
+			updateField(sym + '_CHANGE', (prices.c - prices.o).toFixed(4));
+			updateField(sym + '_CHANGEP', (((prices.c - prices.o) / prices.o) * 100).toFixed(2) + '%');
+			// Don't touch ASK/BID/SPREAD - leave previous askbid values intact
+			window.priceHistory[sym] = { lastClose: prices.c, open: prices.o };
+		}
+		// AskBid mode: real-time ask/bid
+		else if (prices.mode === 'askbid') {
+			updateField(sym + '_PRICE', prices.c.toFixed(4));
+			updateField(sym + '_ASK', prices.a ? prices.a.toFixed(4) : '-');
+			updateField(sym + '_BID', prices.b ? prices.b.toFixed(4) : '-');
+			if (prices.a && prices.b) updateField(sym + '_SPREAD', (prices.a - prices.b).toFixed(4));
+
+			if (window.priceHistory[sym]) {
+				const base = window.priceHistory[sym].open || window.priceHistory[sym].lastClose;
+				updateField(sym + '_CHANGE', (prices.c - base).toFixed(4));
+				updateField(sym + '_CHANGEP', (((prices.c - base) / base) * 100).toFixed(2) + '%');
+				updateField(sym + '_LASTC', base.toFixed(4));
+			}
+			window.priceHistory[sym] = { lastClose: prices.c, open: window.priceHistory[sym]?.open };
+		}
+
+		// Update time with flash animation
+		const timeEl = document.getElementById(sym + '_TIME');
+		if (timeEl) {
+			timeEl.textContent = new Date().toLocaleTimeString();
+			timeEl.classList.add('time_update');
+			setTimeout(() => timeEl.classList.remove('time_update'), 500);
+		}
+	}
+
+	// Helper to update field value without animation
+	function updateField(id, value) {
+		const el = document.getElementById(id);
+		if (el) el.textContent = value;
+	}
+</script>
+
+</body></html>
